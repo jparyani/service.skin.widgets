@@ -107,17 +107,22 @@ class gui:
             for item in data['result']['tvshows']:
                 if xbmc.abortRequested:
                     break
-                count += 1
                 data2 = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetEpisodes", "params": {"tvshowid": %d, "properties": ["title", "playcount", "plot", "season", "episode", "showtitle", "file", "lastplayed", "rating", "resume", "art", "streamdetails", "firstaired", "runtime"], "sort": {"method": "episode"}, "filter": {"field": "playcount", "operator": "is", "value": "0"}, "limits": {"end": 1}}, "id": 1}' %item['tvshowid'])
                 data2 = unicode(data2, 'utf-8', errors='ignore')
                 data2 = simplejson.loads(data2)
-                if data2.has_key('result') and data2['result'] != None and data2['result'].has_key('episodes'):
-                    for item2 in data2['result']['episodes']:
-                        episode = ("%.2d" % float(item2['episode']))
-                        season = "%.2d" % float(item2['season'])
-                        rating = str(round(float(item2['rating']),1))
-                        episodeno = "s%se%s" %(season,episode)
-                        art2 = item2['art']
+
+                if data2.has_key('result') and data2['result'] != None and data2['result'].has_key('episodes') and len(data2['result']['episodes']) > 0:
+                        item2 = data2['result']['episodes'][-1]
+                else:
+                    continue
+
+                episode = ("%.2d" % float(item2['episode']))
+                season = "%.2d" % float(item2['season'])
+                rating = str(round(float(item2['rating']), 1))
+                episodeno = "s%se%s" % (season, episode)
+                art2 = item2['art']
+                count += 1
+
                 #seasonthumb = ''
                 if (item2['resume']['position'] and item2['resume']['total']) > 0:
                     resume = "true"
