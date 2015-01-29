@@ -78,7 +78,7 @@ class Main:
         self.WINDOW = xbmcgui.Window(10000)
         self.Player = Widgets_Player(action = self._update)
         self.Monitor = Widgets_Monitor(update_listitems = self._update, update_settings = self._on_change)
-        self.LIMIT = 20
+        self.LIMIT = 200
 
     def _on_change(self):
         clearlist_groups = ['Recommended','Random','Recent']
