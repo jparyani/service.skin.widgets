@@ -26,7 +26,7 @@ else:
     import json as simplejson
 
 __addon__        = lib.common.__addon__
-LIMIT = 20
+LIMIT = 200
 RANDOMITEMS_UNPLAYED = __addon__.getSetting("randomitems_unplayed") == 'true'
 RECENTITEMS_UNPLAYED = __addon__.getSetting("recentitems_unplayed") == 'true'
 

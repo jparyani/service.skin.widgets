@@ -32,7 +32,7 @@ from lib.requests import req
 GUI = gui()
 REQ = req()
 WINDOW = xbmcgui.Window(10000)
-LIMIT = 20
+LIMIT = 200
 
 ### get addon info
 __addon__        = lib.common.__addon__
