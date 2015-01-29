@@ -261,6 +261,11 @@ class Main:
                             item2 = json_query2['result']['episodes'][-1]
                     else:
                         continue
+                    episode = ("%.2d" % float(item2['episode']))
+                    season = "%.2d" % float(item2['season'])
+                    rating = str(round(float(item2['rating']),1))
+                    episodeno = "s%se%s" %(season,episode)
+                    art2 = item2['art']
                     #seasonthumb = ''
                     if (item2['resume']['position'] and item2['resume']['total']) > 0:
                         resume = "true"
